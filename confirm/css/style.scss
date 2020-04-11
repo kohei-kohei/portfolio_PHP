@@ -1,0 +1,234 @@
+@import "../../css/variable";
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+/* メディアクエリの定義 */
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+/* 全ての要素に適用 */
+*, *:before, *:after {
+    color: $word-color;
+    box-sizing: border-box;
+}
+
+/* 初期化 */
+body {
+    font-family: 'Open Sans',"游ゴシック", "Yu Gothic", "游ゴシック体", YuGothic, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+html {
+    font-size: 10px;
+}
+img {
+    vertical-align: bottom;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+
+/* 文字の定義 */
+h1 {
+    font-family: 'Playball',"游ゴシック", "Yu Gothic", "游ゴシック体", YuGothic, sans-serif;
+    font-size: 14rem;
+    white-space: nowrap;
+    text-align: center;
+    margin: 0;
+    @include mq('tab') {
+        line-height: 1;
+        white-space: normal;
+    }
+    @include mq('sp') {
+        font-size: 8rem;
+    }
+}
+h2 {
+    font-size: 5rem;
+    @include mq('tab') {
+        font-size: 4rem;
+    }
+    @include mq('sp') {
+        font-size: 2.2rem;
+    }
+}
+h3 {
+    font-size: 3rem;
+    @include mq('tab') {
+        font-size:2.5rem;
+    }
+    @include mq('sp') {
+        font-size: 2rem;
+    }
+}
+p {
+    font-size: 2rem;
+    margin: 0;
+    @include mq("sp") {
+        font-size: 1.6rem;
+    }
+}
+a {
+    font-size: 2rem;
+    @include mq("sp") {
+        font-size: 1.6rem;
+    }
+}
+ul, li {
+    font-size: 1.6rem;
+    list-style: none;
+} /* 文字の定義 */
+
+/* インナーの幅 */
+.inner {
+    width: $layout-width-inner;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 横並びにする */
+.flex {
+    display: flex;
+    @include mq('sp'){
+        display: block;
+    }
+}
+
+/* メイン */
+#main {
+    .inner {
+        padding: 2rem;
+        
+        .title {
+            display: inline-block;
+            font-size: 4rem;
+            margin: 1rem auto 3rem;
+            text-decoration: underline $yellow;
+            @include mq('tab') {
+                font-size: 3.5rem;
+            }
+            @include mq('sp') {
+                font-size: 2.2rem;
+            }
+        }
+
+        .confirm {
+            background-color: $gray;
+            box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            padding: 4rem 6rem;
+            width: 100%;
+            @include mq('sp'){
+                margin: 0;
+                padding: 2rem 3rem;
+            }
+
+            .form-title {
+                margin: 0 auto 3rem;
+            }
+            
+            p {
+                font-size: 2.2rem;
+                @include mq('sp') {
+                    font-size: 1.6rem;
+                }                   
+            }
+            
+            .flex {
+                text-align: left;
+                p {
+                    &:first-of-type {
+                        width: 22rem;
+                        margin-right: 5rem;
+                        margin-bottom: 2rem;
+                        padding-left: 3rem;
+                        position: relative;
+                        @include mq('sp'){
+                            margin: 0;
+                            padding-left: 2rem;
+                            width: 100%;
+                        }
+
+                        &::before {
+                            content: '\f044';
+                            position: absolute;
+                            font-family: 'Font Awesome 5 Free';
+                            font-weight: 900;
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+                    &:nth-of-type(2){
+                        @include mq('sp'){
+                            margin-bottom: 2rem;
+                        }
+                    }
+                }
+            }
+        } /* フォーム */
+
+        .parent {
+            margin: 5rem auto 1rem;
+            text-align: left;
+            @include mq('tab'){
+                text-align: center;
+            }
+
+            a {
+                display: inline-block;
+                padding-left: 2rem;
+                position: relative;
+                transition: all .2s ease-in 0s;
+                
+                &::before {
+                    content: '\f060';
+                    font-family: 'Font Awesome 5 Free';
+                    font-weight: 900;
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+                
+                &:hover {
+                    color: red;
+                    text-decoration: underline;
+                    &::before {
+                        color: red;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+/* フッター */
+footer {
+    background-color: $word-color;
+    text-align: center;
+    padding: 7rem 0;
+    @include mq('sp'){
+        padding: 5rem 0;
+    }
+    
+    h2 {
+        color: white;
+        font-family: 'Playball',"游ゴシック", "Yu Gothic", "游ゴシック体", YuGothic, sans-serif;
+        margin: 0;
+    }
+
+    p {
+        color: white;
+        margin-top: 2rem;
+    }
+} /* フッター */
