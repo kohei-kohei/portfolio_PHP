@@ -15,10 +15,21 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 } else {
     // フォームがサブミットされた場合（POST処理）
     // 入力された値を取得する
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $gender = $_POST['gender'];
-    $inquiry = $_POST['inquiry'];
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $gender = htmlspecialchars($_POST['gender']);
+    $inquiry = htmlspecialchars($_POST['inquiry']);
+
+    // 変数とタイムゾーンを初期化
+	$auto_reply_subject = 'お問い合わせありがとうございます。';
+	$auto_reply_text = " この度は、お問い合わせ頂き誠にありがとうございます。下記の内容でお問い合わせを受け付けました。\n
+     返信に数日かかる場合がございますが、あらかじめご了承ください。\n\n";
+    $auto_reply_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
+	$auto_reply_text .= "氏名：" . $name . "\n";
+	$auto_reply_text .= "性別：" . $gender . "\n";
+	$auto_reply_text .= "メールアドレス：" . $email . "\n\n";
+	$auto_reply_text .= "メッセージ：" . $inquiry . "\n\n";
+	date_default_timezone_set('Asia/Tokyo');
 
     // エラーメッセージ・完了メッセージの用意
     $err_msg = '';
@@ -34,25 +45,31 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     if (true) {
         $to = 'sky6sk212@gmail.com'; // 管理者のメールアドレスなど送信先を指定
         $headers = "From: " . $email . "\r\n";
+        $auto_headers = "From: " . $to . "\r\n";
 
-        // 本文の最後に名前を追加
-        $inquiry .= "\r\n\r\n" . $name;
+        $subject = 'お問い合わせ内容';
+        $receive_text = "--- ポートフォリオからのお問い合わせ ---" . "\n\n";
+        $receive_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
+        $receive_text .= "氏名：" . $name . "\n";
+        $receive_text .= "性別：" . $gender . "\n";
+        $receive_text .= "メールアドレス：" . $email . "\n\n";
+        $receive_text .= "メッセージ：" . $inquiry . "\n\n";
 
         // メール送信
-        if(mb_send_mail($to, $gender, $inquiry, $headers)){
+        if(mb_send_mail($to, $subject, $receive_text, $headers)){
             echo "メールを送信しました";
-          } else {
+        } else {
             echo "メールの送信に失敗しました";
-          };
+        };
 
+        if(mb_send_mail( $email, $auto_reply_subject, $auto_reply_text, $auto_headers)){
+            echo "メールを送信しました";
+        } else {
+            echo "メールの送信に失敗しました";
+        };
+        
         // 完了メッセージ
         //$complete_msg = '送信されました！';
-
-        // 全てクリア
-        $name = '';
-        $email = '';
-        $subject = '';
-        $message = '';
     }
 
 }
@@ -90,22 +107,22 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
                     <div class="flex">
                         <p class="form-item">氏名</p>
-                        <p><?php echo $_POST['name']; ?></p>
+                        <p><?php echo $name; ?></p>
                     </div>
 
                     <div class="flex">
                         <p class="form-item">メールアドレス</p>
-                        <p><?php echo $_POST['email']; ?></p>
+                        <p><?php echo $email; ?></p>
                     </div>
                     
                     <div class="flex">
                         <p class="form-item">性別</p>
-                        <p><?php echo $_POST['gender']; ?></p>
+                        <p><?php echo $gender; ?></p>
                     </div>                    
     
                     <div class="flex">
                         <p class="form-item">メッセージ</p>
-                        <p><?php echo $_POST['inquiry']; ?></p>
+                        <p><?php echo $inquiry; ?></p>
                     </div>
                     
                 </div>
