@@ -1,78 +1,16 @@
 <?php
+    session_start();
 
-mb_language("Japanese");
-mb_internal_encoding("UTF-8");
+    $_SESSION['token'] = base64_encode(random_bytes(48));
+    $token = htmlspecialchars($_SESSION['token'], ENT_QUOTES);
 
-if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    // POSTでのアクセスでない場合
-    $name = '';
-    $email = '';
-    $gender = '';
-    $inquiry = '';
-    $err_msg = '';
-    $complete_msg = '';
-
-} else {
-    // フォームがサブミットされた場合（POST処理）
     // 入力された値を取得する
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $gender = htmlspecialchars($_POST['gender']);
-    $inquiry = htmlspecialchars($_POST['inquiry']);
+    $name = $_SESSION['name'];
+    $email = $_SESSION['email'];
+    $gender = $_SESSION['gender'];
+    $inquiry = $_SESSION['inquiry'];
+    $token = $_SESSION['token'];
 
-    // 変数とタイムゾーンを初期化
-	$auto_reply_subject = 'お問い合わせありがとうございます。';
-	$auto_reply_text = " この度は、お問い合わせ頂き誠にありがとうございます。下記の内容でお問い合わせを受け付けました。\n
-     返信に数日かかる場合がございますが、あらかじめご了承ください。\n\n";
-    $auto_reply_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
-	$auto_reply_text .= "氏名：" . $name . "\n";
-	$auto_reply_text .= "性別：" . $gender . "\n";
-	$auto_reply_text .= "メールアドレス：" . $email . "\n\n";
-	$auto_reply_text .= "メッセージ：" . $inquiry . "\n\n";
-	date_default_timezone_set('Asia/Tokyo');
-
-    // エラーメッセージ・完了メッセージの用意
-    $err_msg = '';
-    $complete_msg = '';
-
-    // 空チェック
-    if ($name == '' || $email == '' || $gender == '' || $inquiry == '') {
-        $err_msg = '全ての項目を入力してください。';
-    }
-
-    // エラーなし（全ての項目が入力されている）
-    //if ($err_msg == '') {
-    if (true) {
-        $to = 'sky6sk212@gmail.com'; // 管理者のメールアドレスなど送信先を指定
-        $headers = "From: " . $email . "\r\n";
-        $auto_headers = "From: " . $to . "\r\n";
-
-        $subject = 'お問い合わせ内容';
-        $receive_text = "--- ポートフォリオからのお問い合わせ ---" . "\n\n";
-        $receive_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
-        $receive_text .= "氏名：" . $name . "\n";
-        $receive_text .= "性別：" . $gender . "\n";
-        $receive_text .= "メールアドレス：" . $email . "\n\n";
-        $receive_text .= "メッセージ：" . $inquiry . "\n\n";
-
-        // メール送信
-        if(mb_send_mail($to, $subject, $receive_text, $headers)){
-            echo "メールを送信しました";
-        } else {
-            echo "メールの送信に失敗しました";
-        };
-
-        if(mb_send_mail( $email, $auto_reply_subject, $auto_reply_text, $auto_headers)){
-            echo "メールを送信しました";
-        } else {
-            echo "メールの送信に失敗しました";
-        };
-        
-        // 完了メッセージ
-        //$complete_msg = '送信されました！';
-    }
-
-}
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portfolio</title>
+        <title>確認画面</title>
 
         <!-- Twitterの設定 -->
         <meta name="twitter:card" content="summary" /> 
@@ -99,11 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     <body>
         <section id="main">
             <div class="inner">
-                <h2 class="title">お問い合わせありがとうございます</h2>
+                <h3>お問い合わせ内容の確認</h3>
+
+                <p class="confirm">こちらの内容でよろしければ送信ボタンを押してください。送信後に確認メールが届きます。</p>
 
                 <!-- フォームの中 -->
-                <div class="confirm">
-                    <h3 class="form-title">入力内容</h3>
+                <form action="complete.php" method="post" class="form">
+                    <h3 class="form-title">入力内容の確認</h3>
 
                     <div class="flex">
                         <p class="form-item">氏名</p>
@@ -125,11 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                         <p><?php echo $inquiry; ?></p>
                     </div>
                     
-                </div>
+                    <input type="hidden" name="token" value="<?php echo $token; ?>">
+                    <input class="submit-btn" type="submit" name="submit" value="送信する">
+                </form>
                 <!-- フォームの中 -->
 
                 <div class="parent">
-                    <a href="../index.php">前のページに戻る</a>
+                    <a href="../index.php?action=edit">前のページで修正する</a>
                 </div>
 
             </div>

@@ -7,8 +7,7 @@
 /* 全ての要素に適用 */
 *, *:before, *:after {
   color: #3e3e3e;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* 初期化 */
@@ -125,8 +124,6 @@ ul, li {
 
 /* 横並びにする */
 .flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -142,12 +139,21 @@ ul, li {
   /* フォーム */
 }
 
+#main .inner .confirm {
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 767px) {
+  #main .inner .confirm {
+    text-align: left;
+  }
+}
+
 #main .inner .title {
   display: inline-block;
   font-size: 4rem;
   margin: 1rem auto 3rem;
-  -webkit-text-decoration: underline #ffaa3b;
-          text-decoration: underline #ffaa3b;
+  text-decoration: underline #ffaa3b;
 }
 
 @media screen and (max-width: 1023px) {
@@ -162,41 +168,42 @@ ul, li {
   }
 }
 
-#main .inner .confirm {
+#main .inner .form {
   background-color: #f3f3f3;
-  -webkit-box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
-          box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   padding: 4rem 6rem;
   width: 100%;
+  /* 送信ボタン */
+  /* 送信ボタン */
 }
 
 @media screen and (max-width: 767px) {
-  #main .inner .confirm {
+  #main .inner .form {
     margin: 0;
     padding: 2rem 3rem;
   }
 }
 
-#main .inner .confirm .form-title {
+#main .inner .form .form-title {
   margin: 0 auto 3rem;
 }
 
-#main .inner .confirm p {
+#main .inner .form p {
   font-size: 2.2rem;
 }
 
 @media screen and (max-width: 767px) {
-  #main .inner .confirm p {
+  #main .inner .form p {
     font-size: 1.6rem;
   }
 }
 
-#main .inner .confirm .flex {
+#main .inner .form .flex {
   text-align: left;
 }
 
-#main .inner .confirm .flex p:first-of-type {
+#main .inner .form .flex p:first-of-type {
   width: 22rem;
   margin-right: 5rem;
   margin-bottom: 2rem;
@@ -205,14 +212,14 @@ ul, li {
 }
 
 @media screen and (max-width: 767px) {
-  #main .inner .confirm .flex p:first-of-type {
+  #main .inner .form .flex p:first-of-type {
     margin: 0;
     padding-left: 2rem;
     width: 100%;
   }
 }
 
-#main .inner .confirm .flex p:first-of-type::before {
+#main .inner .form .flex p:first-of-type::before {
   content: '\f044';
   position: absolute;
   font-family: 'Font Awesome 5 Free';
@@ -220,14 +227,52 @@ ul, li {
   position: absolute;
   left: 0;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 @media screen and (max-width: 767px) {
-  #main .inner .confirm .flex p:nth-of-type(2) {
+  #main .inner .form .flex p:nth-of-type(2) {
     margin-bottom: 2rem;
   }
+}
+
+#main .inner .form .submit-btn {
+  appearance: none;
+  background-color: #ffaa3b;
+  background-image: none;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1.8rem;
+  margin: 2.5rem auto 0;
+  padding: 1rem 5rem;
+  font-weight: 400;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease 0s;
+}
+
+@media screen and (max-width: 767px) {
+  #main .inner .form .submit-btn {
+    padding: 0.6rem 3rem;
+    font-size: 1.8rem;
+    margin: 2rem auto;
+  }
+}
+
+#main .inner .form .submit-btn:hover, #main .inner .form .submit-btn:focus {
+  outline: none;
+}
+
+#main .inner .form .submit-btn::-moz-foucus-inner {
+  border: none;
+  padding: 0;
+}
+
+#main .inner .form .submit-btn:hover {
+  background-color: #d47800;
 }
 
 #main .inner .parent {
@@ -245,7 +290,6 @@ ul, li {
   display: inline-block;
   padding-left: 2rem;
   position: relative;
-  -webkit-transition: all .2s ease-in 0s;
   transition: all .2s ease-in 0s;
 }
 
@@ -256,8 +300,7 @@ ul, li {
   position: absolute;
   left: 0;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 #main .inner .parent a:hover {
@@ -294,4 +337,3 @@ footer p {
 }
 
 /* フッター */
-/*# sourceMappingURL=style.css.map */

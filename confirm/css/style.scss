@@ -105,6 +105,13 @@ ul, li {
 #main {
     .inner {
         padding: 2rem;
+
+        .confirm {
+            margin-bottom: 2rem;
+            @include mq('sp') {
+                text-align: left;
+            }
+        }
         
         .title {
             display: inline-block;
@@ -119,7 +126,7 @@ ul, li {
             }
         }
 
-        .confirm {
+        .form {
             background-color: $gray;
             box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
             border-radius: 12px;
@@ -174,6 +181,46 @@ ul, li {
                     }
                 }
             }
+
+            /* 送信ボタン */
+            .submit-btn {
+                appearance: none;
+                background-color: $yellow;
+                background-image: none;
+                border: none;
+                border-radius: 12px;
+                color: #fff;
+                cursor: pointer;
+                display: block;
+                font-size: 1.8rem;
+                margin: 2.5rem auto 0;
+                padding: 1rem 5rem;
+                font-weight: 400;
+                text-decoration: none;
+                position: relative;
+                transition: all 0.3s ease 0s;
+
+                @include mq("sp") {
+                    padding: 0.6rem 3rem;
+                    font-size: 1.8rem;
+                    margin: 2rem auto;
+                }
+                
+                &:hover,
+                &:focus {
+                    outline: none;
+                }
+                
+                &::-moz-foucus-inner {
+                    border: none;
+                    padding: 0;
+                }
+
+                &:hover {
+                    background-color: darken($yellow,20%);
+                }
+
+            } /* 送信ボタン */
         } /* フォーム */
 
         .parent {

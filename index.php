@@ -1,3 +1,50 @@
+<?php 
+    session_start();
+
+    $errors = array();
+
+    // 送信ボタンが押されたとき
+    if (isset($_POST['submit']) && $_POST['submit'] === "送信する") {
+        $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+        $email = htmlspecialchars($_POST['email'], ENT_QUOTES);
+        $gender = htmlspecialchars($_POST['gender'], ENT_QUOTES);
+        $inquiry = htmlspecialchars($_POST['inquiry'], ENT_QUOTES);
+        
+        if ($name === ""){
+            $errors['name'] = "名前を入力してください";
+        }
+        if ($email === ""){
+            $errors['email'] = "メールアドレスを入力してください";
+        }
+        if ($gender === ""){
+            $errors['gender'] = "性別を選択してください";
+        }
+        if ($inquiry === ""){
+            $errors['inquiry'] = "メッセージを入力してください";
+        }
+        
+        // 全て入力されたとき
+        if (count($errors) === 0) {
+            $_SESSION['name'] = $name;
+            $_SESSION['email'] = $email;
+            $_SESSION['gender'] = $gender;
+            $_SESSION['inquiry'] = $inquiry;
+            
+            header('Location: ./confirm/confirm.php');
+            
+            exit();
+        }
+    }
+
+    if (isset($_GET['action']) && $_GET['action'] === 'edit') {
+        $name = $_SESSION['name'];
+        $email = $_SESSION['email'];
+        $gender = $_SESSION['gender'];
+        $inquiry = $_SESSION['inquiry'];
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -192,30 +239,35 @@
                 <div class="inner">
                     <h2 class="title">Contact</h2>
 
-                    <form action="./confirm/confirm.php" method="post">
+                    <form action="index.php" method="post">
 
+                        <!-- 入力チェック -->
+                        <?php if (isset($errors['name'])) { echo "<p class='alert'>※".$errors['name']."</p>"; } ?>
                         <div class="name flex">
                             <p>氏名</p>
-                            <input class="input-text" type="text" name="name" placeholder="氏名">
+                            <input class="input-text" type="text" name="name" placeholder="氏名" value="<?php if (isset($name)) { echo $name; } ?>">
                         </div>
                         
+                        <?php if (isset($errors['email'])) { echo "<p class='alert'>※".$errors['email']."</p>"; } ?>
                         <div class="email flex">
                             <p>メールアドレス</p>
-                            <input class="input-text" type="email" name="email" placeholder="sample@gmail.com">
+                            <input class="input-text" type="email" name="email" placeholder="sample@gmail.com" value="<?php if (isset($email)) { echo $email; } ?>">
                         </div>
                         
+                        <?php if (isset($errors['gender'])) { echo "<p class='alert'>※".$errors['gender']."</p>"; } ?>
                         <div class="radio-wrapper flex">
                             <p>性別</p>
                             <label><input class="radio-btn" type="radio" name="gender" value="男性"><span>男性</span></label>
                             <label><input class="radio-btn" type="radio" name="gender" value="女性"><span>女性</span></label>
                         </div>
     
+                        <?php if (isset($errors['inquiry'])) { echo "<p class='alert'>※".$errors['inquiry']."</p>"; } ?>
                         <div class="inquiry">
                             <p>メッセージ</p>
-                            <textarea name="inquiry" placeholder="まだ実装できていません"></textarea>
+                            <textarea name="inquiry" placeholder="お問い合わせ内容を次のページで確認します"><?php if (isset($inquiry)) { echo $inquiry; } ?></textarea>
                         </div>
     
-                        <input class="submit-btn" type="submit" value="送信する">
+                        <input class="submit-btn" type="submit" name="submit" value="送信する">
                     </form>
                     
                 </div>
