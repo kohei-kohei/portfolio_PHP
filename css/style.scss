@@ -124,9 +124,6 @@ ul, li {
         width: 10rem;
         background-color: $word-color;
         top: 50%;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
         transform: translateY(-50%);
         @include mq('sp'){
             width: 5rem;
@@ -268,7 +265,6 @@ ul, li {
         }
     }  
         
-    
 }
 
 /* メインビジュアル */
@@ -308,13 +304,6 @@ ul, li {
                 transform: translate(-50%,-50%);
 
                 @include mq('tab') {
-                    width: 555px;
-                    height: 345px;
-                    display: none;
-                }
-                @include mq('sp') {
-                    width: 340px;
-                    height: 210px;
                     display: none;
                 }
             }
@@ -343,6 +332,9 @@ ul, li {
         @include mq('tab'){
             width: 100%;
             height: 40%;
+        }
+        @include mq('sp'){
+            height: 35%;
         }
     }
 
@@ -395,10 +387,14 @@ ul, li {
                     background-color: rgba($light-blue, 0.7);
                     z-index: 3;
                 }
+
+                h3 {
+                    margin: 0 0 2rem;
+                }
                 
                 p {
                     &:nth-of-type(2) {
-                        margin: 2rem 0;
+                        margin: 2rem 0 0;
                     }
                 }
 
@@ -720,9 +716,48 @@ ul, li {
                         z-index: -1;
 
                         @include mq('sp'){
-                            display: block;
+                            display: none;
                         }
                     }
+                    
+                }
+                &:nth-child(5){
+                    &::before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 180px;
+                        height: 180px;
+                        top: 21rem;
+                        left: -9rem;
+                        background-color: rgba($blue, .7);
+                        border-radius: 50%;
+                        z-index: -1;
+
+                        @include mq('sp'){
+                            top: -10rem;
+                            left: -8rem;
+                        }
+                    }
+                    &::after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 300px;
+                        height: 300px;
+                        top: -8rem;
+                        right: -18rem;
+                        background-color: rgba($blue, .3);
+                        border-radius: 50%;
+                        z-index: -1;
+
+                        @include mq('sp'){
+                            top: 10rem;
+                            width: 240px;
+                            height: 240px;
+                        }
+                    }
+                    
                 }
                 
                 a {
@@ -751,12 +786,16 @@ ul, li {
                     }
                 } 
                 
-                p {
-                    &:nth-of-type(2) {
-                        padding: 1.5rem 1rem 0;
-                    }
-                    &:nth-of-type(3) {
-                        padding: 0 1rem 1.5rem;
+                .explanation {
+                    padding: 1.5rem;
+                    text-align: left;
+
+                    p {
+                        margin-bottom: 1rem;
+
+                        &:nth-child(1) {
+                            text-align: center;
+                        }
                     }
                 }
 

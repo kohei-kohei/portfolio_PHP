@@ -101,7 +101,7 @@
 
                         <div class="slide-bottom self-intro">
                             <h3>About me</h3>
-                            <p>Pythonで機械学習を用いた研究をしている大学院生です。現在は、サーバーサイドの言語(PHP)を勉強しています。</p>
+                            <p>Pythonで機械学習を用いた自然言語処理の研究をしている大学院生です。授業で、C/C++を用いた画像処理、音声処理、数値計算を学びました。現在は、サーバーサイドの言語(PHPとLaravel)を自分で勉強しています。</p>
                             <p>資格：基本情報技術者</p>
                                 
                         </div>
@@ -191,8 +191,12 @@
                                     <img src="img/practice1.png" alt="ポートフォリオの１つ目">
                                 </p>
 
-                                <p>コーディングのみ</p>
-                                <p>デイトラさんが作成したXDデザインカンプから作りました</p>
+                                <div class="explanation">
+                                    <p>コーディングのみ</p>
+                                    <p>使用スキル：HTML、Sass、jQuery</p>
+                                    <p>実装：スライダー、アコーディオン、スムーススクロール、ドロワー、モーダル</p>
+                                </div>
+
                             </a>
                         </div>
                         
@@ -202,8 +206,12 @@
                                     <img src="img/practice2.png" alt="ポートフォリオの２つ目">
                                 </p>
 
-                                <p>コーディングのみ</p>
-                                <p>デイトラさんが作成したXDデザインカンプから作りました</p>
+                                <div class="explanation">
+                                    <p>コーディングのみ</p>
+                                    <p>使用スキル：HTML、Sass、jQuery</p>
+                                    <p>実装：スライダー、アコーディオン、スムーススクロール、ドロワー</p>
+                                </div>
+                                    
                             </a>
                         </div>
                         
@@ -213,8 +221,12 @@
                                     <img src="img/verde.png" alt="ポートフォリオの３つ目">
                                 </p>
                                 
-                                <p>デザイン&コーディング</p>
-                                <p>１から作りました</p>
+                                <div class="explanation">
+                                    <p>デザイン&コーディング</p>
+                                    <p>使用スキル：HTML、Sass、jQuery、Bootstrap</p>
+                                    <p>実装：スライダー、スムーススクロール、ドロワー</p>
+                                </div>
+                                
                             </a>
                         </div>
 
@@ -224,8 +236,27 @@
                                     <img src="img/portfolio.png" alt="ポートフォリオの４つ目">
                                 </p>
                                 
-                                <p>デザイン&コーディング</p>
-                                <p>１から作りました</p>
+                                <div class="explanation">
+                                    <p>デザイン&コーディング</p>
+                                    <p>使用スキル：PHP、Sass、jQuery</p>
+                                    <p>実装：ローディング画面、お問い合わせ機能、自動メール送信</p>
+                                </div>
+                                
+                            </a>
+                        </div>
+
+                        <div class="work">
+                            <a href="https://todolist.ko-hei-blog.com/index.php" target="_brank">
+                                <p class="picture">
+                                    <img src="img/todolist.png" alt="ポートフォリオの５つ目">
+                                </p>
+                                
+                                <div class="explanation">
+                                    <p>デザイン&コーディング</p>
+                                    <p>使用スキル：PHP、Sass、MySQL</p>
+                                    <p>実装：ログイン認証、Todoリスト</p>
+                                </div>
+                                
                             </a>
                         </div>
                         

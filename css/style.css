@@ -7,7 +7,8 @@
 /* 全ての要素に適用 */
 *, *:before, *:after {
   color: #3e3e3e;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /* 初期化 */
@@ -118,6 +119,8 @@ ul, li {
 
 /* 横並びにする */
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -160,9 +163,7 @@ ul, li {
   background-color: #3e3e3e;
   top: 50%;
   -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 @media screen and (max-width: 767px) {
@@ -183,8 +184,25 @@ ul, li {
 /* 見えるようにする */
 .visible {
   visibility: visible !important;
-  animation-duration: 1s;
-  animation-name: fade-in;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  50% {
+    visibility: visible;
+    opacity: .5;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 @keyframes fade-in {
@@ -212,6 +230,7 @@ ul, li {
   background-color: #fff;
   height: 100vh;
   width: 100vw;
+  -webkit-transition: all 1s;
   transition: all 1s;
   position: relative;
 }
@@ -222,7 +241,8 @@ ul, li {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   /* 回転アニメーション */
   /* ピンク色の背景のアニメーション */
   /* 点滅のアニメーション */
@@ -234,8 +254,10 @@ ul, li {
   display: block;
   width: 100%;
   height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ee88aa), color-stop(90%, rgba(250, 238, 255, 0.3)), to(rgba(230, 238, 255, 0.5)));
   background: linear-gradient(to bottom, #ee88aa, rgba(250, 238, 255, 0.3) 90%, rgba(230, 238, 255, 0.5));
-  animation: color-fade 3s infinite linear;
+  -webkit-animation: color-fade 3s infinite linear;
+          animation: color-fade 3s infinite linear;
 }
 
 #loading .spinner .circle1,
@@ -246,19 +268,23 @@ ul, li {
   background: #0af;
   width: 150px;
   height: 150px;
-  transform-origin: 50% 47%;
+  -webkit-transform-origin: 50% 47%;
+          transform-origin: 50% 47%;
   border-radius: 40%;
-  animation: rotation 3s infinite linear;
+  -webkit-animation: rotation 3s infinite linear;
+          animation: rotation 3s infinite linear;
 }
 
 #loading .spinner .circle2 {
   opacity: 0.2;
   background: #ff0;
-  animation: rotation 5s infinite linear;
+  -webkit-animation: rotation 5s infinite linear;
+          animation: rotation 5s infinite linear;
 }
 
 #loading .spinner .circle3 {
-  animation: rotation 2.5s infinite linear;
+  -webkit-animation: rotation 2.5s infinite linear;
+          animation: rotation 2.5s infinite linear;
 }
 
 #loading .spinner .loading-title {
@@ -271,15 +297,38 @@ ul, li {
   font-size: 1.5rem;
   line-height: 2rem;
   letter-spacing: 0.15em;
-  animation: text-fade 300ms infinite linear;
+  -webkit-animation: text-fade 300ms infinite linear;
+          animation: text-fade 300ms infinite linear;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 @keyframes rotation {
   from {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes color-fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
   }
 }
 
@@ -289,6 +338,21 @@ ul, li {
   }
   50% {
     opacity: 0.7;
+  }
+}
+
+@-webkit-keyframes text-fade {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.6;
   }
 }
 
@@ -321,7 +385,8 @@ ul, li {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.7);
   color: #252525;
   z-index: 1;
@@ -348,21 +413,12 @@ ul, li {
   height: 220px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 @media screen and (max-width: 1023px) {
   #main .container .jumbotron::before {
-    width: 555px;
-    height: 345px;
-    display: none;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  #main .container .jumbotron::before {
-    width: 340px;
-    height: 210px;
     display: none;
   }
 }
@@ -392,6 +448,12 @@ ul, li {
   #profile::after {
     width: 100%;
     height: 40%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #profile::after {
+    height: 35%;
   }
 }
 
@@ -457,8 +519,12 @@ ul, li {
   z-index: 3;
 }
 
+#profile .inner .profile-wrapper .self-intro h3 {
+  margin: 0 0 2rem;
+}
+
 #profile .inner .profile-wrapper .self-intro p:nth-of-type(2) {
-  margin: 2rem 0;
+  margin: 2rem 0 0;
 }
 
 /* プロフィール */
@@ -497,13 +563,15 @@ ul, li {
 }
 
 #skills .inner .skill-wrapper {
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 0 1rem;
 }
 
 #skills .inner .skill-wrapper .skill {
   background: #a8ffaa;
-  box-shadow: 0px 0px 0px 6px #a8ffaa;
+  -webkit-box-shadow: 0px 0px 0px 6px #a8ffaa;
+          box-shadow: 0px 0px 0px 6px #a8ffaa;
   border: dashed 2px white;
   margin: 2rem;
   padding: 2rem;
@@ -568,15 +636,19 @@ ul, li {
 }
 
 #services .inner .service-wrapper {
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   z-index: 1;
 }
 
 #services .inner .service-wrapper .service {
   background-color: white;
   border: 2px solid #3e3e3e;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   margin: 2rem;
   padding: 2rem;
   position: relative;
@@ -675,14 +747,18 @@ ul, li {
 }
 
 #works .inner .work-wrapper {
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 0 1rem;
 }
 
 #works .inner .work-wrapper .work {
   background-color: #fff;
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
   margin: 2rem;
   position: relative;
   visibility: hidden;
@@ -777,7 +853,48 @@ ul, li {
 
 @media screen and (max-width: 767px) {
   #works .inner .work-wrapper .work:nth-child(4)::after {
-    display: block;
+    display: none;
+  }
+}
+
+#works .inner .work-wrapper .work:nth-child(5)::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: 21rem;
+  left: -9rem;
+  background-color: rgba(73, 115, 255, 0.7);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+@media screen and (max-width: 767px) {
+  #works .inner .work-wrapper .work:nth-child(5)::before {
+    top: -10rem;
+    left: -8rem;
+  }
+}
+
+#works .inner .work-wrapper .work:nth-child(5)::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: -8rem;
+  right: -18rem;
+  background-color: rgba(73, 115, 255, 0.3);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+@media screen and (max-width: 767px) {
+  #works .inner .work-wrapper .work:nth-child(5)::after {
+    top: 10rem;
+    width: 240px;
+    height: 240px;
   }
 }
 
@@ -798,12 +915,17 @@ ul, li {
   content: 'このサイトです';
 }
 
-#works .inner .work-wrapper .work p:nth-of-type(2) {
-  padding: 1.5rem 1rem 0;
+#works .inner .work-wrapper .work .explanation {
+  padding: 1.5rem;
+  text-align: left;
 }
 
-#works .inner .work-wrapper .work p:nth-of-type(3) {
-  padding: 0 1rem 1.5rem;
+#works .inner .work-wrapper .work .explanation p {
+  margin-bottom: 1rem;
+}
+
+#works .inner .work-wrapper .work .explanation p:nth-child(1) {
+  text-align: center;
 }
 
 #works .inner .work-wrapper .work img {
@@ -834,7 +956,8 @@ ul, li {
   margin: 4rem 0 0 0;
   width: 100%;
   text-align: left;
-  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   padding: 4rem 5rem;
   /* 横並べにする */
@@ -894,7 +1017,9 @@ ul, li {
 }
 
 #contact .inner form .input-text {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background-color: transparent;
   background-image: none;
   border: none;
@@ -917,11 +1042,14 @@ ul, li {
 #contact .inner form .input-text:focus, #contact .inner form .input-text:hover {
   border-bottom: 1px solid #3b69ff;
   outline: none;
-  box-shadow: 0 10px 4px -4px rgba(59, 105, 255, 0.2);
+  -webkit-box-shadow: 0 10px 4px -4px rgba(59, 105, 255, 0.2);
+          box-shadow: 0 10px 4px -4px rgba(59, 105, 255, 0.2);
 }
 
 #contact .inner form textarea {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background-color: transparent;
   background-image: none;
   border: 1px solid rgba(0, 0, 0, 0.16);
@@ -937,8 +1065,10 @@ ul, li {
 
 #contact .inner form textarea:focus, #contact .inner form textarea:hover {
   border: 1px solid #3b69ff;
-  box-shadow: none;
-  box-shadow: 0 0 3px #3b69ff;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-shadow: 0 0 3px #3b69ff;
+          box-shadow: 0 0 3px #3b69ff;
   outline: none;
 }
 
@@ -972,7 +1102,8 @@ ul, li {
   left: 0;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   width: 16px;
 }
 
@@ -987,14 +1118,17 @@ ul, li {
   padding: 2px;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   width: 8px;
 }
 
 #contact .inner form .radio-btn + span:focus:before, #contact .inner form .radio-btn + span:hover:before {
   border: 1px solid #3b69ff;
-  box-shadow: 0 0 4px #3b69ff;
+  -webkit-box-shadow: 0 0 4px #3b69ff;
+          box-shadow: 0 0 4px #3b69ff;
 }
 
 #contact .inner form .radio-btn + span:active:before {
@@ -1034,7 +1168,8 @@ ul, li {
   left: 0;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   width: 1.6rem;
 }
 
@@ -1049,14 +1184,17 @@ ul, li {
   opacity: 0;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%) rotate(-45deg);
+  -webkit-transform: translateY(-50%) rotate(-45deg);
+          transform: translateY(-50%) rotate(-45deg);
+  -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   width: 1em;
 }
 
 #contact .inner form .check-btn + span:focus:before, #contact .inner form .check-btn + span:hover:before {
   border: 1px solid #3b69ff;
-  box-shadow: 0 0 4px #3b69ff;
+  -webkit-box-shadow: 0 0 4px #3b69ff;
+          box-shadow: 0 0 4px #3b69ff;
 }
 
 #contact .inner form .check-btn + span:active:before {
@@ -1079,7 +1217,9 @@ ul, li {
 }
 
 #contact .inner form .submit-btn {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background-color: #ffaa3b;
   background-image: none;
   border: none;
@@ -1093,6 +1233,7 @@ ul, li {
   font-weight: 400;
   text-decoration: none;
   position: relative;
+  -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
 
@@ -1196,7 +1337,8 @@ footer p {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   color: #747474;
   font-weight: 900;
   font-size: 3rem;
@@ -1213,3 +1355,4 @@ footer p {
 }
 
 /* フローティングボタン */
+/*# sourceMappingURL=style.css.map */
