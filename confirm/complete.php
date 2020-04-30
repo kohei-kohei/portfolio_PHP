@@ -63,10 +63,10 @@
         <!-- Twitterの設定 -->
         <meta name="twitter:card" content="summary" /> 
         <meta name="twitter:site" content="@Kohei_web_nlp" />
-        <meta property="og:url" content="https://kohei-kohei.github.io/portfolio/" /> 
+        <meta property="og:url" content="https://portfolio.ko-hei-blog.com/" /> 
         <meta property="og:title" content="Kohei's Portfolio" /> 
         <meta property="og:description" content="こーへいのポートフォリオサイトです" />
-        <meta property="og:image" content="https://kohei-kohei.github.io/portfolio/img/dubai.jpg" />
+        <meta property="og:image" content="https://portfolio.ko-hei-blog.com/img/dubai.jpg" />
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
