@@ -568,6 +568,14 @@ ul, li {
   margin: 0 1rem;
 }
 
+@media screen and (max-width: 767px) {
+  #skills .inner .skill-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
 #skills .inner .skill-wrapper .skill {
   background: #a8ffaa;
   -webkit-box-shadow: 0px 0px 0px 6px #a8ffaa;
@@ -575,19 +583,18 @@ ul, li {
   border: dashed 2px white;
   margin: 2rem;
   padding: 2rem;
-  width: calc(33.33333333% - 4rem);
+  width: calc(25% - 4rem);
 }
 
 @media screen and (max-width: 1023px) {
   #skills .inner .skill-wrapper .skill {
-    width: calc(50% - 4rem);
+    width: calc(33.33333% - 4rem);
   }
 }
 
 @media screen and (max-width: 767px) {
   #skills .inner .skill-wrapper .skill {
-    width: calc(100% - 4rem);
-    margin-bottom: 3rem;
+    width: calc(50% - 4rem);
   }
 }
 
@@ -622,6 +629,14 @@ ul, li {
 
 #skills .inner .skill-wrapper .skill .fa-php::before {
   color: #a971cb;
+}
+
+#skills .inner .skill-wrapper .skill .fa-database::before {
+  color: #a7a7a7;
+}
+
+#skills .inner .skill-wrapper .skill .fa-github::before {
+  color: #3e3e3e;
 }
 
 #skills .inner .skill-wrapper .skill .language {

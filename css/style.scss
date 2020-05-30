@@ -437,6 +437,9 @@ ul, li {
         .skill-wrapper {
             flex-wrap: wrap;
             margin: 0 1rem;
+            @include mq('sp') {
+                display: flex;
+            }
 
             .skill {
                 background: $green;
@@ -444,13 +447,12 @@ ul, li {
                 border: dashed 2px white;
                 margin: 2rem;
                 padding: 2rem;
-                width: calc(33.33333333% - 4rem);
+                width: calc(25% - 4rem);
                 @include mq('tab') {
-                    width: calc(50% - 4rem);
+                    width: calc(33.33333% - 4rem);
                 }
                 @include mq('sp') {
-                    width: calc(100% - 4rem);
-                    margin-bottom: 3rem;
+                    width: calc(50% - 4rem);
                 }
 
                 i {
@@ -487,6 +489,16 @@ ul, li {
                 .fa-php {
                     &::before {
                         color: #a971cb;
+                    }
+                }
+                .fa-database {
+                    &::before {
+                        color: rgb(167, 167, 167);
+                    }
+                }
+                .fa-github {
+                    &::before {
+                        color: $word-color;
                     }
                 }
 

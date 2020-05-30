@@ -121,63 +121,43 @@ if (isset($_GET['action']) && $_GET['action'] === 'edit') {
                     <div class="skill slide-left">
                         <i class="fab fa-html5"></i>
                         <h3 class="language">HTML5</h3>
-                        <p>Webページを作成します</p>
                     </div>
                     <div class="skill slide-top">
                         <i class="fab fa-css3-alt"></i>
                         <h3 class="language">CSS3</h3>
-                        <p>Webページのデザインを整えます</p>
-                    </div>
-                    <div class="skill slide-right">
-                        <i class="fab fa-js"></i>
-                        <h3 class="language">JavaScript(jQuery)</h3>
-                        <p>Webページにリッチな動きをつけます</p>
-                    </div>
-
-                    <div class="skill slide-left">
-                        <i class="fab fa-cuttlefish"></i>
-                        <h3 class="language">C/C++</h3>
-                        <p>組み込み開発に使用します</p>
                     </div>
                     <div class="skill slide-bottom">
+                        <i class="fab fa-js"></i>
+                        <h3 class="language">JavaScript</h3>
+                    </div>
+
+                    <div class="skill slide-right">
+                        <i class="fab fa-cuttlefish"></i>
+                        <h3 class="language">C/C++</h3>
+                    </div>
+                    <div class="skill slide-left">
                         <i class="fab fa-python"></i>
                         <h3 class="language">Python</h3>
-                        <p>機械学習やデータ分析に使用します</p>
                     </div>
-                    <div class="skill slide-right">
+                    <div class="skill slide-bottom">
                         <i class="fab fa-php"></i>
                         <h3 class="language">PHP</h3>
-                        <p>動的にWebページを作成します</p>
                     </div>
+                    <div class="skill slide-top">
+                        <i class="fas fa-database"></i>
+                        <h3 class="language">SQL</h3>
+                    </div>
+                    <div class="skill slide-right">
+                        <i class="fab fa-github"></i>
+                        <h3 class="language">GitHub</h3>
+                    </div>
+                    
+                    
                 </div>
 
             </div>
         </section> <!-- /スキル -->
 
-        <!-- サービス -->
-        <section id="services">
-            <div class="inner">
-                <h2 class="title">Services</h2>
-
-                <div class="service-wrapper flex">
-                    <div class="service slide-left">
-                        <h3>HP作成</h3>
-                        <i class="fas fa-laptop-code"></i>
-                        <p>PCでもスマートフォンでもデザインが崩れないようにサイトを作成いたします。</p>
-
-                    </div>
-
-                    <div class="service slide-right">
-                        <h3>WordPress</h3>
-                        <i class="fab fa-wordpress"></i>
-                        <p>WordPressを用いてサイトを作成いたします。また、既存のHPをWordPress化いたします。</p>
-                        <p>※勉強中です</p>
-
-                    </div>
-                </div>
-
-            </div>
-        </section> <!-- /サービス -->
 
         <!-- ワーク -->
         <section id="works">
@@ -187,45 +167,30 @@ if (isset($_GET['action']) && $_GET['action'] === 'edit') {
                 <div class="work-wrapper flex">
 
                     <div class="work">
-                        <a href="https://kohei-kohei.github.io/practice1/" target="_brank">
+                        <a href="https://todolist.ko-hei-blog.com/index.php" target="_brank">
                             <p class="picture">
-                                <img src="img/practice1.png" alt="ポートフォリオの１つ目">
+                                <img src="img/todolist.png" alt="ポートフォリオの５つ目">
                             </p>
 
                             <div class="explanation">
-                                <p>コーディングのみ</p>
-                                <p>使用スキル：HTML、Sass、jQuery</p>
-                                <p>実装：スライダー、アコーディオン、ドロワー、モーダル</p>
+                                <p>ログイン機能付きTodoリスト<br>設計&コーディング</p>
+                                <p>使用スキル：PHP、Sass、MySQL</p>
+                                <p>実装：ログイン認証、Todoリスト</p>
                             </div>
 
                         </a>
                     </div>
 
                     <div class="work">
-                        <a href="https://kohei-kohei.github.io/practice2/" target="_brank">
+                        <a href="https://laravel-sns-vue.herokuapp.com/" target="_brank">
                             <p class="picture">
-                                <img src="img/practice2.png" alt="ポートフォリオの２つ目">
+                                <img src="img/laravel-sns-vue.png" alt="ポートフォリオの６つ目">
                             </p>
 
                             <div class="explanation">
-                                <p>コーディングのみ</p>
-                                <p>使用スキル：HTML、Sass、jQuery</p>
-                                <p>実装：スライダー、アコーディオン、ドロワー</p>
-                            </div>
-
-                        </a>
-                    </div>
-
-                    <div class="work">
-                        <a href="https://verde-chiba.com/" target="_brank">
-                            <p class="picture">
-                                <img src="img/verde.png" alt="ポートフォリオの３つ目">
-                            </p>
-
-                            <div class="explanation">
-                                <p>デザイン&コーディング</p>
-                                <p>使用スキル：HTML、Sass、jQuery、Bootstrap</p>
-                                <p>実装：スライダー、ドロワー</p>
+                                <p>簡易SNS（改良中）<br>コーディングのみ</p>
+                                <p>使用スキル：Laravel、Vue、PostgreSQL、Docker、heroku</p>
+                                <p>実装：ログイン認証、Googleログイン、いいね機能、フォロー機能、投稿・削除機能</p>
                             </div>
 
                         </a>
@@ -238,7 +203,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'edit') {
                             </p>
 
                             <div class="explanation">
-                                <p>デザイン&コーディング</p>
+                                <p>HP制作<br>デザイン&コーディング</p>
                                 <p>使用スキル：PHP、Sass、jQuery</p>
                                 <p>実装：ローディング画面、お問い合わせ機能、自動メール送信</p>
                             </div>
@@ -247,19 +212,53 @@ if (isset($_GET['action']) && $_GET['action'] === 'edit') {
                     </div>
 
                     <div class="work">
-                        <a href="https://todolist.ko-hei-blog.com/index.php" target="_brank">
+                        <a href="https://kohei-kohei.github.io/practice2/" target="_brank">
                             <p class="picture">
-                                <img src="img/todolist.png" alt="ポートフォリオの５つ目">
+                                <img src="img/practice2.png" alt="ポートフォリオの２つ目">
                             </p>
 
                             <div class="explanation">
-                                <p>デザイン&コーディング</p>
-                                <p>使用スキル：PHP、Sass、MySQL</p>
-                                <p>実装：ログイン認証、Todoリスト</p>
+                                <p>LP制作<br>コーディングのみ</p>
+                                <p>使用スキル：HTML、Sass、jQuery</p>
+                                <p>実装：スライダー、アコーディオン、ドロワー</p>
                             </div>
 
                         </a>
                     </div>
+
+                    <div class="work">
+                        <a href="https://kohei-kohei.github.io/practice1/" target="_brank">
+                            <p class="picture">
+                                <img src="img/practice1.png" alt="ポートフォリオの１つ目">
+                            </p>
+
+                            <div class="explanation">
+                                <p>LP制作<br>コーディングのみ</p>
+                                <p>使用スキル：HTML、Sass、jQuery</p>
+                                <p>実装：スライダー、アコーディオン、ドロワー、モーダル</p>
+                            </div>
+
+                        </a>
+                    </div>
+
+                    <!-- <div class="work">
+                        <a href="https://verde-chiba.com/" target="_brank">
+                            <p class="picture">
+                                <img src="img/verde.png" alt="ポートフォリオの３つ目">
+                            </p>
+
+                            <div class="explanation">
+                                <p>デザイン&コーディング</p>
+                                <p>使用スキル：HTML、Sass、jQuery、Bootstrap</p>
+                                <p>実装：スライダー、ドロワー</p>
+                            </div>
+
+                        </a>
+                    </div> -->
+
+                    
+
+                    
 
                 </div>
 
